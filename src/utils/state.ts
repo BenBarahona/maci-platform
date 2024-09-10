@@ -11,6 +11,8 @@ export const getAppState = (): EAppState => {
     return EAppState.LOADING;
   }
 
+  console.log("State Aq",pollData?.isStateAqMerged)
+  console.log("Tally",tallyData)
   if (isAfter(config.registrationEndsAt, now)) return EAppState.APPLICATION;
   if (isAfter(config.reviewEndsAt, now)) return EAppState.REVIEWING;
   if (isAfter(votingEndsAt, now)) return EAppState.VOTING;
