@@ -128,8 +128,5 @@
   },
   "browser": {
     "child_process": false
-  },
-  "engines": {
-    "pnpm": "9"
   }
 }
