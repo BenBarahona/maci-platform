@@ -12,6 +12,8 @@ import type { ReactNode } from "react";
 import { AllocationInput } from "./AllocationInput";
 import { ProjectAvatarWithName } from "./ProjectAvatarWithName";
 
+import { ballotCategory } from "../VoteCategories";
+
 interface AllocationFormProps {
   disabled?: boolean;
   projectIsLink?: boolean;
@@ -33,6 +35,20 @@ export const AllocationFormWrapper = ({
     control: form.control,
   });
 
+  const maxAmountPerCategory = 20;
+
+  const updateTotalVotes = (votes: Vote[], projectId: string, index: number) => {
+    const projectVotes = votes.find((vote) => vote.projectId === projectId)
+    
+    var totalVote = 0;
+    projectVotes?.category.map((amount) => {
+      totalVote += amount;
+      return totalVote;
+    })
+
+    form.setValue(`votes.${index}.amount`, totalVote);
+  }
+
   return (
     <Table>
       {renderHeader?.()}
@@ -44,11 +60,30 @@ export const AllocationFormWrapper = ({
               <ProjectAvatarWithName showDescription id={project.projectId} isLink={projectIsLink} />
             </Td>
 
+            {ballotCategory.map((category, index) => (
+              <Td className="pr-0" key={category}>
+                <div className="font-bold uppercase">{category}</div>
+                <AllocationInput
+                  defaultValue={project.amount}
+                  disabled={disabled}
+                  name={`votes.${i}.category.${index}`}
+                  votingMaxProject={maxAmountPerCategory}
+                  onBlur={() => {
+                    updateTotalVotes(form.getValues().votes, project.projectId, i);
+                    onSave(form.getValues().votes, pollId);
+                  }}
+                />
+            </Td>
+            ))}
+            
+
             <Td className="pr-0">
+            <div className="font-bold uppercase">TOTAL</div>
               <AllocationInput
                 defaultValue={project.amount}
                 disabled={disabled}
                 name={`votes.${i}.amount`}
+                editable={false}
                 votingMaxProject={initialVoiceCredits}
                 onBlur={() => {
                   onSave(form.getValues().votes, pollId);

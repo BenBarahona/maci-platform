@@ -13,6 +13,7 @@ import { EAppState } from "~/utils/types";
 import { ConnectButton } from "./ConnectButton";
 import { IconButton } from "./ui/Button";
 import { Logo } from "./ui/Logo";
+import { FAQButton } from "./FAQButton";
 
 interface INavLinkProps extends ComponentPropsWithRef<typeof Link> {
   isActive: boolean;
@@ -109,6 +110,10 @@ const Header = ({ navLinks }: IHeaderProps) => {
             variant="ghost"
             onClick={handleChangeTheme}
           />
+
+          <Link className="py-4" href="/signup#faq-section">
+            <FAQButton />
+          </Link>
 
           <ConnectButton />
         </div>

@@ -34,7 +34,7 @@ export const Info = ({ size, showVotingInfo = false }: InfoProps): JSX.Element =
 
   const steps = [
     {
-      label: "application",
+      label: "apply between",
       state: EAppState.APPLICATION,
       start: config.startsAt,
       end: config.registrationEndsAt,
@@ -46,7 +46,7 @@ export const Info = ({ size, showVotingInfo = false }: InfoProps): JSX.Element =
       end: votingEndsAt,
     },
     {
-      label: "tallying",
+      label: "evaluation",
       state: EAppState.TALLYING,
       start: votingEndsAt,
       end: config.resultsAt,

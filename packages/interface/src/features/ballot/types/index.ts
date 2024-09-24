@@ -3,6 +3,7 @@ import { z } from "zod";
 export const VoteSchema = z.object({
   projectId: z.string(),
   amount: z.number().min(0),
+  category: z.array(z.number().min(0)),
 });
 
 export const BallotSchema = z.object({

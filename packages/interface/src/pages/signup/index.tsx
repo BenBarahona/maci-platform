@@ -30,15 +30,18 @@ const SignupPage = (): JSX.Element => {
         </Heading>
 
         <Heading as="h2" className="max-w-screen-lg text-center" size="4xl">
-          {config.roundId.toUpperCase()}
+          {/* {config.roundId.toUpperCase()} */}
+          Cryptoversidad
         </Heading>
 
         <p className="flex max-w-screen-md gap-2 text-center text-xl dark:text-gray-400">
-          <span>{config.startsAt && format(config.startsAt, "d MMMM, yyyy")}</span>
-
-          <span>-</span>
-
-          <span>{config.resultsAt && format(config.resultsAt, "d MMMM, yyyy")}</span>
+          {/* <span>{config.startsAt && format(config.startsAt, "d MMMM, yyyy")}</span> */}
+          October 1st
+          <span>
+            -
+          </span>
+          October 8th, 2024
+          {/* <span>{config.resultsAt && format(config.resultsAt, "d MMMM, yyyy")}</span> */}
         </p>
 
         {!isConnected && <ConnectButton />}

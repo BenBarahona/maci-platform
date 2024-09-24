@@ -10,6 +10,9 @@ export interface IAllocationInputProps extends ComponentPropsWithRef<"input"> {
   disabled?: boolean;
   tokenAddon?: boolean;
   error?: boolean;
+
+  editable?: boolean;
+  onKeyDown?: (e: React.KeyboardEvent) => void;
 }
 
 export const AllocationInput = ({
@@ -17,6 +20,7 @@ export const AllocationInput = ({
   name,
   tokenAddon = false,
   onBlur,
+  editable = true,
   ...props
 }: IAllocationInputProps): JSX.Element => {
   const form = useFormContext();
@@ -39,6 +43,7 @@ export const AllocationInput = ({
             className="pr-16"
             defaultValue={props.defaultValue as string}
             disabled={props.disabled}
+            readOnly={!editable}
             isAllowed={({ floatValue }) =>
               votingMaxProject !== undefined ? (floatValue ?? 0) <= votingMaxProject : (floatValue ?? 0) >= 0
             }
