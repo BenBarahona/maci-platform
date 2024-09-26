@@ -1,6 +1,7 @@
 export const ballotCategory = [
-    "Category 1",
-    "Category 2",
-    // "Category 3",
-    // "Category 4",
-]
+  "Market Need",
+  "Alignment with Core Values",
+  "Scale of Impact",
+  "Sustainability and Scalability",
+  "Optimism-related",
+];

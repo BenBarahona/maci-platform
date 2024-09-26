@@ -28,8 +28,7 @@ const ProjectDetails = ({
 }: IProjectDetailsProps): JSX.Element => {
   const metadata = useProjectMetadata(attestation?.metadataPtr);
 
-  const { bio, websiteUrl, payoutAddress, github, twitter, fundingSources, profileImageUrl, bannerImageUrl } =
-    metadata.data ?? {};
+  const { bio, websiteUrl, payoutAddress, github, twitter, profileImageUrl, bannerImageUrl } = metadata.data ?? {};
 
   const appState = useAppState();
 
@@ -70,11 +69,11 @@ const ProjectDetails = ({
           title="contributions"
         />
 
-        <ProjectDescriptionSection
+        {/* <ProjectDescriptionSection
           description={metadata.data?.impactDescription}
           fundings={fundingSources}
           title="past grants and funding"
-        />
+        /> */}
 
         {action}
       </div>

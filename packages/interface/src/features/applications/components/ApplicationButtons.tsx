@@ -43,7 +43,6 @@ export const ApplicationButtons = ({
     name,
     bio,
     payoutAddress,
-    websiteUrl,
     profileImageUrl,
     bannerImageUrl,
     contributionDescription,
@@ -57,7 +56,6 @@ export const ApplicationButtons = ({
         "name",
         "bio",
         "payoutAddress",
-        "websiteUrl",
         "profileImageUrl",
         "bannerImageUrl",
         "contributionDescription",
@@ -81,8 +79,7 @@ export const ApplicationButtons = ({
         profileImageUrl !== undefined &&
         bio.length > 0 &&
         name.length > 0 &&
-        payoutAddress.length > 0 &&
-        websiteUrl.length > 0
+        payoutAddress.length > 0
       );
     }
 

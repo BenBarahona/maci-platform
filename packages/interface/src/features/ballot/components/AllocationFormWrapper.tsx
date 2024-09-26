@@ -9,10 +9,10 @@ import { useMaci } from "~/contexts/Maci";
 import type { Vote } from "../types";
 import type { ReactNode } from "react";
 
+import { ballotCategory } from "../VoteCategories";
+
 import { AllocationInput } from "./AllocationInput";
 import { ProjectAvatarWithName } from "./ProjectAvatarWithName";
-
-import { ballotCategory } from "../VoteCategories";
 
 interface AllocationFormProps {
   disabled?: boolean;
@@ -35,19 +35,20 @@ export const AllocationFormWrapper = ({
     control: form.control,
   });
 
-  const maxAmountPerCategory = 20;
+  const maxAmountPerCategory = 4;
 
   const updateTotalVotes = (votes: Vote[], projectId: string, index: number) => {
-    const projectVotes = votes.find((vote) => vote.projectId === projectId)
-    
-    var totalVote = 0;
-    projectVotes?.category.map((amount) => {
-      totalVote += amount;
-      return totalVote;
-    })
+    const projectVotes = votes.find((vote) => vote.projectId === projectId);
+
+    let totalVote = 0;
+    if (projectVotes?.category && projectVotes.category.length >= 5) {
+      const [C1 = 0, C2 = 0, C3 = 0, C4 = 0, C5 = 0] = projectVotes.category;
+
+      totalVote = (C1 + 1) * (C2 + 1) * (C3 + 1) * (C4 + 1) + C5;
+    }
 
     form.setValue(`votes.${index}.amount`, totalVote);
-  }
+  };
 
   return (
     <Table>
@@ -61,8 +62,9 @@ export const AllocationFormWrapper = ({
             </Td>
 
             {ballotCategory.map((category, index) => (
-              <Td className="pr-0" key={category}>
+              <Td key={category} className="pr-0">
                 <div className="font-bold uppercase">{category}</div>
+
                 <AllocationInput
                   defaultValue={project.amount}
                   disabled={disabled}
@@ -73,17 +75,17 @@ export const AllocationFormWrapper = ({
                     onSave(form.getValues().votes, pollId);
                   }}
                 />
-            </Td>
+              </Td>
             ))}
-            
 
             <Td className="pr-0">
-            <div className="font-bold uppercase">TOTAL</div>
+              <div className="font-bold uppercase">TOTAL</div>
+
               <AllocationInput
                 defaultValue={project.amount}
                 disabled={disabled}
-                name={`votes.${i}.amount`}
                 editable={false}
+                name={`votes.${i}.amount`}
                 votingMaxProject={initialVoiceCredits}
                 onBlur={() => {
                   onSave(form.getValues().votes, pollId);

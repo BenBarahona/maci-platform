@@ -56,7 +56,7 @@ export const ReviewApplicationDetails = (): JSX.Element => {
         <ValueField required body={application.bio} title="Project description" />
 
         <div className="grid grid-flow-row grid-cols-2 gap-4">
-          <ValueField required body={application.websiteUrl} title="Website" />
+          {/* <ValueField required body={application.websiteUrl} title="Website" /> */}
 
           <ValueField required body={application.payoutAddress} title="Payout address" />
 
@@ -114,10 +114,12 @@ export const ReviewApplicationDetails = (): JSX.Element => {
           title="Contribution links"
         />
 
-        <ValueField
+        <ValueField required body={application.impactDescription} title="Impact description" />
+
+        {/* <ValueField
           body={application.fundingSources?.map((link) => <LinkField key={link.description} fundingSource={link} />)}
           title="Funding sources"
-        />
+        /> */}
       </div>
     </div>
   );

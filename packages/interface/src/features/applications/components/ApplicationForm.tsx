@@ -11,7 +11,7 @@ import { Input } from "~/components/ui/Input";
 import { useIsCorrectNetwork } from "~/hooks/useIsCorrectNetwork";
 
 import { useCreateApplication } from "../hooks/useCreateApplication";
-import { ApplicationSchema, contributionTypes, fundingSourceTypes } from "../types";
+import { ApplicationSchema, contributionTypes } from "../types";
 
 import { ApplicationButtons, EApplicationStep } from "./ApplicationButtons";
 import { ApplicationSteps } from "./ApplicationSteps";
@@ -79,23 +79,23 @@ export const ApplicationForm = (): JSX.Element => {
       >
         <FormSection
           className={step === EApplicationStep.PROFILE ? "block" : "hidden"}
-          description="Please provide information about your project."
-          title="Project Profile"
+          description=""
+          title="Personal Info"
         >
-          <FormControl required hint="This is the name of your project" label="Project name" name="name">
-            <Input placeholder="Type your project name" />
+          <FormControl required hint="This is your name or alias" label="Your name/alias" name="name">
+            <Input placeholder="Type your name or alias" />
           </FormControl>
 
-          <FormControl required label="Description" name="bio">
-            <Textarea placeholder="Type project description" rows={4} />
+          <FormControl required label="Brief Bio" name="bio">
+            <Textarea placeholder="Type something about yourself" rows={4} />
           </FormControl>
 
           <div className="gap-4 md:flex">
-            <FormControl required className="flex-1" label="Website" name="websiteUrl">
+            {/* <FormControl className="flex-1" label="Website" name="websiteUrl">
               <Input placeholder="https://" />
-            </FormControl>
+            </FormControl> */}
 
-            <FormControl required className="flex-1" label="Payout address" name="payoutAddress">
+            <FormControl required className="flex-1" label="Payout address (only OP Mainnet)" name="payoutAddress">
               <Input placeholder="0x..." />
             </FormControl>
           </div>
@@ -107,12 +107,12 @@ export const ApplicationForm = (): JSX.Element => {
 
             <FormControl
               className="flex-1"
-              hint="Provide your github of this project"
-              label="Github"
-              name="github"
+              hint="Provide your telegram username"
+              label="Telegram"
+              name="telegram"
               required={false}
             >
-              <Input placeholder="Type your github username" />
+              <Input placeholder="Type your telegram username" />
             </FormControl>
           </div>
 
@@ -120,7 +120,7 @@ export const ApplicationForm = (): JSX.Element => {
             <FormControl
               required
               hint="The size should be smaller than 1MB."
-              label="Project avatar"
+              label="Profile Picture"
               name="profileImageUrl"
             >
               <ImageUpload className="h-48 w-48 " />
@@ -130,7 +130,7 @@ export const ApplicationForm = (): JSX.Element => {
               required
               className="flex-1"
               hint="The size should be smaller than 1MB."
-              label="Project background image"
+              label="Background image"
               name="bannerImageUrl"
             >
               <ImageUpload className="h-48 " />
@@ -140,21 +140,31 @@ export const ApplicationForm = (): JSX.Element => {
 
         <FormSection
           className={step === EApplicationStep.ADVANCED ? "block" : "hidden"}
-          description="Describe the contribution and impact of your project."
+          description="Describe your contributions and impact on the ecosystem"
           title="Contribution & Impact"
         >
-          <FormControl required label="Contribution description" name="contributionDescription">
-            <Textarea placeholder="What have your project contributed to?" rows={4} />
+          <FormControl required label="Your Contributions" name="contributionDescription">
+            <Textarea
+              placeholder="Describe very concisly and specific the things/actions 
+            you did related to Ethereum that you are applying for. (Example: I founded a 
+            blockchain club in my university and did 3 developer workshops)"
+              rows={4}
+            />
           </FormControl>
 
-          <FormControl required label="Impact description" name="impactDescription">
-            <Textarea placeholder="What impact has your project had?" rows={4} />
+          <FormControl required label="Impact" name="impactDescription">
+            <Textarea
+              placeholder="Describe the tangible specific results of your contributions. 
+            What are the results of your work? These should be metrics (Example: We setup a node 
+            at the university and deployed 10 smart contracts) "
+              rows={4}
+            />
           </FormControl>
 
           <ImpactTags />
 
           <FieldArray
-            description="Where can we find your contributions?"
+            description="Provide tangible evidence that showcases your results (Dune dashboards, testimonials, images)"
             name="contributionLinks"
             renderField={(field, i) => (
               <div className="mb-4 flex flex-wrap gap-2">
@@ -177,10 +187,14 @@ export const ApplicationForm = (): JSX.Element => {
                 </FormControl>
               </div>
             )}
-            title="Contribution links"
+            title="Contribution links/evidence"
           />
 
-          <FieldArray
+          <FormControl label="Additional comment" name="additionalComment">
+            <Textarea placeholder="Provide any other relevant information to evaluate your impact. " rows={4} />
+          </FormControl>
+
+          {/* <FieldArray
             description="From what sources have you received funding?"
             name="fundingSources"
             renderField={(field, i) => (
@@ -209,7 +223,7 @@ export const ApplicationForm = (): JSX.Element => {
               </div>
             )}
             title="Funding sources"
-          />
+          /> */}
         </FormSection>
 
         {step === EApplicationStep.REVIEW && <ReviewApplicationDetails />}
