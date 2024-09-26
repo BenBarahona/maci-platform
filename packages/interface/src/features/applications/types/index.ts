@@ -31,7 +31,6 @@ export const ApplicationSchema = z.object({
     .string()
     .min(1)
     .optional()
-    .default("")
     .transform((url) =>
       // Automatically prepend "https://" if it's missing
       /^(http:\/\/|https:\/\/)/i.test(url) ? url : `https://${url}`,
