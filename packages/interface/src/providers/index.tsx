@@ -19,7 +19,7 @@ const customTheme: Theme = {
     ...theme.colors,
   },
   fonts: {
-    body: "Share Tech Mono",
+    body: "Encode Sans",
   },
   radii: {
     ...theme.radii,

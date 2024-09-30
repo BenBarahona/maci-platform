@@ -50,6 +50,8 @@ export const ApplicationButtons = ({
     impactCategory,
     contributionLinks,
     fundingSources,
+    github,
+    twitter,
   ] = useMemo(
     () =>
       form.watch([
@@ -63,6 +65,8 @@ export const ApplicationButtons = ({
         "impactCategory",
         "contributionLinks",
         "fundingSources",
+        "github",
+        "twitter",
       ]),
     [form],
   );
@@ -79,7 +83,9 @@ export const ApplicationButtons = ({
         profileImageUrl !== undefined &&
         bio.length > 0 &&
         name.length > 0 &&
-        payoutAddress.length > 0
+        payoutAddress.length > 0 &&
+        github.length > 0 &&
+        twitter.length > 0
       );
     }
 

@@ -35,9 +35,11 @@ export const ImpactTags = (): JSX.Element => {
               selected={isSelected}
               size="md"
               onClick={() => {
-                const currentlySelected = isSelected ? selected.filter((s) => s !== value) : selected.concat(value);
+                // Multiple selection
+                // const currentlySelected = isSelected ? selected.filter((s) => s !== value) : selected.concat(value);
+                // field.onChange(currentlySelected);
 
-                field.onChange(currentlySelected);
+                field.onChange(isSelected ? null : [value]); // Single selection
               }}
             >
               {label}

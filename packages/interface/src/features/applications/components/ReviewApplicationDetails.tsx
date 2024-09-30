@@ -62,7 +62,7 @@ export const ReviewApplicationDetails = (): JSX.Element => {
 
           <ValueField body={application.twitter} title="X(Twitter)" />
 
-          <ValueField body={application.github} title="Github" />
+          <ValueField body={application.github} title="Telegram" />
         </div>
 
         <div className="flex gap-6">
@@ -114,7 +114,7 @@ export const ReviewApplicationDetails = (): JSX.Element => {
           title="Contribution links"
         />
 
-        <ValueField required body={application.impactDescription} title="Impact description" />
+        <ValueField body={application.additionalComment} required={false} title="Additional Comment" />
 
         {/* <ValueField
           body={application.fundingSources?.map((link) => <LinkField key={link.description} fundingSource={link} />)}

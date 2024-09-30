@@ -38,8 +38,10 @@ export const ApplicationSchema = z.object({
   payoutAddress: EthAddressSchema,
   github: z.string().optional(),
   twitter: z.string().optional(),
+  telegram: z.string().optional(),
   contributionDescription: z.string().min(3),
   impactDescription: z.string().min(3),
+  additionalComment: z.string().min(3).optional(),
   impactCategory: z.array(z.string()).min(1).optional(),
   contributionLinks: z
     .array(

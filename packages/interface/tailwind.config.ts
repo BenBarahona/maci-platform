@@ -80,7 +80,7 @@ export default {
       },
       fontFamily: {
         sans: ["DM Sans", ...theme.fontFamily.sans],
-        mono: ["Share Tech Mono", ...theme.fontFamily.mono],
+        mono: ["Encode Sans", ...theme.fontFamily.mono],
       },
       width: {
         "112": "28rem",

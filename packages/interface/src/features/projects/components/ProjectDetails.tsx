@@ -31,7 +31,6 @@ const ProjectDetails = ({
   const { bio, websiteUrl, payoutAddress, github, twitter, profileImageUrl, bannerImageUrl } = metadata.data ?? {};
 
   const appState = useAppState();
-
   return (
     <div className="relative dark:text-white">
       <div className="mb-7">
@@ -60,8 +59,13 @@ const ProjectDetails = ({
 
       <div className="my-8 flex flex-col gap-8">
         <p className="text-xl uppercase">
-          <b>Impact statements</b>
+          <b>Contributions & Impact</b>
         </p>
+
+        <ProjectDescriptionSection
+          description={metadata.data?.impactCategory ? metadata.data.impactCategory[0] : ""}
+          title="Category"
+        />
 
         <ProjectDescriptionSection
           contributions={metadata.data?.contributionLinks}
@@ -69,11 +73,9 @@ const ProjectDetails = ({
           title="contributions"
         />
 
-        {/* <ProjectDescriptionSection
-          description={metadata.data?.impactDescription}
-          fundings={fundingSources}
-          title="past grants and funding"
-        /> */}
+        <ProjectDescriptionSection description={metadata.data?.impactDescription} title="Impact" />
+
+        <ProjectDescriptionSection description={metadata.data?.additionalComment} title="Additional Comment" />
 
         {action}
       </div>

@@ -101,16 +101,16 @@ export const ApplicationForm = (): JSX.Element => {
           </div>
 
           <div className="gap-4 md:flex">
-            <FormControl className="flex-1" label="X(Twitter)" name="twitter" required={false}>
+            <FormControl required className="flex-1" label="X(Twitter)" name="twitter">
               <Input placeholder="Type your twitter username" />
             </FormControl>
 
             <FormControl
+              required
               className="flex-1"
               hint="Provide your telegram username"
               label="Telegram"
-              name="telegram"
-              required={false}
+              name="github"
             >
               <Input placeholder="Type your telegram username" />
             </FormControl>

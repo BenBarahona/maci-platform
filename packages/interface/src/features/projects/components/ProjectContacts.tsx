@@ -1,4 +1,4 @@
-import { FaGithub, FaEthereum } from "react-icons/fa";
+import { FaGithub, FaEthereum, FaTelegram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { RiGlobalLine } from "react-icons/ri";
 
@@ -27,23 +27,23 @@ export const ProjectContacts = ({
     )}
 
     {twitter && (
-      <Link href="https://x.com" target="_blank">
+      <Link href={`https://x.com/${twitter}`} target="_blank">
         <FaXTwitter />
-        x.com
+        {twitter}
       </Link>
     )}
 
-    {website && (
+    {/* {website && (
       <Link href={website} target="_blank">
         <RiGlobalLine />
 
         {website}
       </Link>
-    )}
+    )} */}
 
     {github && (
-      <Link href="https://github.com" target="_blank">
-        <FaGithub />
+      <Link href={`https://t.me/${github}`} target="_blank">
+        <FaTelegram />
 
         {github}
       </Link>
