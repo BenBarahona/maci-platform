@@ -68,20 +68,20 @@ const Stats = () => {
 
   return (
     <div>
-      <Heading size="lg">Top Projects</Heading>
+      <Heading size="lg">Top Applications</Heading>
 
       <div className="mb-8 h-[400px] rounded-xl bg-white text-black">
         <ResultsChart data={chartData} />
       </div>
 
       <div className="grid gap-2 md:grid-cols-3">
-        <Stat title="Projects applied">{count.data?.count}</Stat>
+        <Stat title="Applications">{count.data?.count}</Stat>
 
-        <Stat title="Projects voted for">{Object.keys(projects).length}</Stat>
+        <Stat title="Applications voted for">{Object.keys(projects).length}</Stat>
 
         <Stat title="People Voting">{pollData.numSignups ? Number(pollData.numSignups) - 1 : 0}</Stat>
 
-        <Stat title="Average votes per project">{formatNumber(averageVotes)}</Stat>
+        <Stat title="Average votes per application">{formatNumber(averageVotes)}</Stat>
       </div>
     </div>
   );
