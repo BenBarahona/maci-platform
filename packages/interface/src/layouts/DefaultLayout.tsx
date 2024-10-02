@@ -57,7 +57,7 @@ export const Layout = ({ children = null, ...props }: ILayoutProps): JSX.Element
       });
     }
 
-    if (config.admin === address! || config.admin2 === address!) {
+    if (config.admin === address! || config.otherAdmins.includes(address!)) {
       links.push(
         ...[
           {
@@ -68,7 +68,10 @@ export const Layout = ({ children = null, ...props }: ILayoutProps): JSX.Element
       );
     }
 
-    if ((config.admin === address! || config.admin2 === address!) && gatekeeperTrait === GatekeeperTrait.EAS) {
+    if (
+      (config.admin === address! || config.otherAdmins.includes(address!)) &&
+      gatekeeperTrait === GatekeeperTrait.EAS
+    ) {
       links.push(
         ...[
           {

@@ -16,7 +16,6 @@ export function useUploadMetadata(): UseMutationResult<{ url: string }, DefaultE
         const blob = new Blob([JSON.stringify(data)], {
           type: "application/json",
         });
-
         uploadData = new File([blob], "metadata.json");
       } else {
         uploadData = data;

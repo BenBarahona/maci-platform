@@ -33,7 +33,7 @@ export const ApplicationSchema = z.object({
     .optional()
     .transform((url) =>
       // Automatically prepend "https://" if it's missing
-      /^(http:\/\/|https:\/\/)/i.test(url) ? url : `https://${url}`,
+      /^(http:\/\/|https:\/\/)/i.test(url ?? "") ? url : `https://${url}`,
     ),
   payoutAddress: EthAddressSchema,
   github: z.string().optional(),
@@ -41,7 +41,7 @@ export const ApplicationSchema = z.object({
   telegram: z.string().optional(),
   contributionDescription: z.string().min(3),
   impactDescription: z.string().min(3),
-  additionalComment: z.string().min(3).optional(),
+  additionalComment: z.string().default("").optional(),
   impactCategory: z.array(z.string()).min(1).optional(),
   contributionLinks: z
     .array(

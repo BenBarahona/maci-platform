@@ -5,5 +5,5 @@ import { config } from "~/config";
 export function useIsAdmin(): boolean {
   const { address } = useAccount();
 
-  return config.admin === address! || config.admin2 === address!;
+  return config.admin === address! || config.otherAdmins.includes(address!);
 }

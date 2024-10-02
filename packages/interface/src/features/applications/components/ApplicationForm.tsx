@@ -190,7 +190,7 @@ export const ApplicationForm = (): JSX.Element => {
             title="Contribution links/evidence"
           />
 
-          <FormControl label="Additional comment" name="additionalComment">
+          <FormControl label="Additional comment" name="additionalComment" required={false}>
             <Textarea placeholder="Provide any other relevant information to evaluate your impact. " rows={4} />
           </FormControl>
 

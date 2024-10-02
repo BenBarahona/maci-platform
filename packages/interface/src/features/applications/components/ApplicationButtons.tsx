@@ -52,6 +52,7 @@ export const ApplicationButtons = ({
     fundingSources,
     github,
     twitter,
+    additionalComment,
   ] = useMemo(
     () =>
       form.watch([
@@ -67,6 +68,7 @@ export const ApplicationButtons = ({
         "fundingSources",
         "github",
         "twitter",
+        "additionalComment",
       ]),
     [form],
   );
@@ -76,6 +78,8 @@ export const ApplicationButtons = ({
   ): boolean =>
     links === undefined || links.every((link) => link.description !== undefined && link.description.length > 0);
 
+  const checkEmptyStrings = (input: string | undefined): boolean => input === undefined || input.length >= 0;
+
   const checkStepComplete = (): boolean => {
     if (step === EApplicationStep.PROFILE) {
       return (
@@ -84,8 +88,8 @@ export const ApplicationButtons = ({
         bio.length > 0 &&
         name.length > 0 &&
         payoutAddress.length > 0 &&
-        github.length > 0 &&
-        twitter.length > 0
+        (github ?? "").length > 0 &&
+        (twitter ?? "").length > 0
       );
     }
 
@@ -96,7 +100,8 @@ export const ApplicationButtons = ({
         contributionDescription.length > 0 &&
         impactDescription.length > 0 &&
         checkLinks(contributionLinks) &&
-        checkLinks(fundingSources)
+        checkLinks(fundingSources) &&
+        checkEmptyStrings(additionalComment)
       );
     }
 

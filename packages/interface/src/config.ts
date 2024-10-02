@@ -82,7 +82,9 @@ export const config = {
   eventName: process.env.NEXT_PUBLIC_EVENT_NAME ?? "MACI-PLATFORM",
   roundId: process.env.NEXT_PUBLIC_ROUND_ID!,
   admin: (process.env.NEXT_PUBLIC_ADMIN_ADDRESS ?? "") as `0x${string}`,
-  admin2: (process.env.NEXT_PUBLIC_ADMIN_ADDRESS_SECOND ?? "") as `0x${string}`,
+  otherAdmins: (process.env.NEXT_PUBLIC_ADMIN_ADDRESS_SECOND ?? "")
+    .split(",")
+    .map((admin) => admin.trim() as `0x${string}`),
   network: wagmiChains[process.env.NEXT_PUBLIC_CHAIN_NAME as keyof typeof wagmiChains],
   maciAddress: process.env.NEXT_PUBLIC_MACI_ADDRESS,
   maciStartBlock: Number(process.env.NEXT_PUBLIC_MACI_START_BLOCK ?? 0),
