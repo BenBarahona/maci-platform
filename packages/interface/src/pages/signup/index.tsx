@@ -36,11 +36,11 @@ const SignupPage = (): JSX.Element => {
 
         <p className="flex max-w-screen-md gap-2 text-center text-xl dark:text-gray-400">
           {/* <span>{config.startsAt && format(config.startsAt, "d MMMM, yyyy")}</span> */}
-          October 1st
+          October 3rd
           <span>
             -
           </span>
-          October 8th, 2024
+          October 23rd, 2024
           {/* <span>{config.resultsAt && format(config.resultsAt, "d MMMM, yyyy")}</span> */}
         </p>
 
